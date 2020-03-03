@@ -11,8 +11,6 @@ void main()
     vec4 tex_color = texture2D(tex, gl_TexCoord[0]);
 
     float intensity = max(dot(L, normal),0.0);
-    gl_FragColor.rgb = intensity * tex_color.diffuse.rgb * gl_LightSource[0].diffuse.rgb + tex_color.ambient.rgb * gl_LightSource[0].ambient.rgb;
+    gl_FragColor.rgb = intensity * tex_color.rgb * gl_LightSource[0].diffuse.rgb + gl_FrontMaterial.ambient.rgb * gl_LightSource[0].ambient.rgb;
     gl_FragColor.a = 1.0;
-
-
-
+}
